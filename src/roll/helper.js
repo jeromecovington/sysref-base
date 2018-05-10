@@ -62,7 +62,7 @@ function applyAdvantageOrDisadvantage (roll1, roll2, advantageOrDisadvantage = '
   throw new Error(`${advantageOrDisadvantage} is not a valid value for advantageOrDisadvantage`)
 }
 
-exports = {
+module.exports = {
   roll,
   d20Roll,
   damageRoll,
