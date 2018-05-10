@@ -1,17 +1,18 @@
-import {
+const {
   afterEach,
   beforeEach,
   describe,
   it
-} from 'mocha'
-import { expect } from 'chai'
+} = require('mocha')
+const { expect } = require('chai')
 
-import BaseCreature from './BaseCreature'
+const BaseCreature = require('../../src/creature/BaseCreature')
 
 describe('BaseCreature', () => {
   let abilities
   let advantages
   let disadvantages
+  let baseStats
   let stats
   let Creature
 
@@ -26,12 +27,12 @@ describe('BaseCreature', () => {
     }
     advantages = ['strength']
     disadvantages = ['intelligence', 'wisdom']
-    stats = {
-      ...abilities,
+    baseStats = {
       advantages,
       disadvantages,
       hitPointsRollFunc: () => 10
     }
+    stats = Object.assign({}, abilities, baseStats);
 
     Creature = new BaseCreature(stats)
   })

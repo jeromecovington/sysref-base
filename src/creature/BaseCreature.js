@@ -1,4 +1,4 @@
-export default class BaseCreature {
+module.exports = class BaseCreature {
   constructor ({
     strength,
     dexterity,
