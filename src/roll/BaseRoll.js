@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import {
+const {
   d20Roll,
   damageRoll,
   getAdvantageOrDisadvantage,
@@ -7,16 +7,9 @@ import {
   getArmorClass,
   makeSavingThrow,
   applyAdvantageOrDisadvantage
-} from './helper'
+} = require('./helper')
 
-// These are supplied as defaults, but it is expected that each game will
-// likely supply their own.
-import abilityMapDefault from '../feat/abilityMap'
-import difficultyMapDefault from '../feat/difficultyMap'
-import weaponMapDefault from '../item/weaponMap'
-import armorMapDefault from '../item/armorMap'
-
-export default class BaseRoll {
+module.exports = class BaseRoll {
   constructor ({
     rollFunc,
     abilityMap,
@@ -25,10 +18,10 @@ export default class BaseRoll {
     armorMap
   }) {
     this.rollFunc = rollFunc || d20Roll
-    this.abilityMap = abilityMap || abilityMapDefault
-    this.difficultyMap = difficultyMap || difficultyMapDefault
-    this.weaponMap = weaponMap || weaponMapDefault
-    this.armorMap = armorMap || armorMapDefault
+    this.abilityMap = abilityMap
+    this.difficultyMap = difficultyMap
+    this.weaponMap = weaponMap
+    this.armorMap = armorMap
   }
 
   abilityCheck (entity, skill, difficulty) {

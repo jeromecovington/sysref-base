@@ -1,15 +1,20 @@
-import {
+const {
   afterEach,
   beforeEach,
   describe,
   it
-} from 'mocha'
-import { expect } from 'chai'
+} = require('mocha')
+const { expect } = require('chai')
 
-import BaseRoll from './BaseRoll'
-import BaseCreature from '../creature/BaseCreature'
+const BaseRoll = require('../../src/roll/BaseRoll')
+const BaseCreature = require('../../src/creature/BaseCreature')
 
-import MockCreature from './creature.mock'
+const MockCreature = require('./creature.mock')
+
+const abilityMap = require('../exampleFeats/abilityMap')
+const difficultyMap = require('../exampleFeats/difficultyMap')
+const weaponMap = require('../exampleItems/weaponMap')
+const armorMap = require('../exampleItems/armorMap')
 
 describe('roll base', () => {
   let Roll
@@ -17,10 +22,14 @@ describe('roll base', () => {
   let mockRoll
 
   beforeEach(() => {
-    /* eslint-disable global-require */
-    mockRoll = require('./roll.mock').default
-    /* eslint-enable */
-    Roll = new BaseRoll({ rollFunc: mockRoll })
+    mockRoll = require('./roll.mock')
+    Roll = new BaseRoll({
+      rollFunc: mockRoll,
+      abilityMap,
+      difficultyMap,
+      weaponMap,
+      armorMap
+    })
     Creature = MockCreature
   })
 

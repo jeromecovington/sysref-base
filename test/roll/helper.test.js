@@ -1,14 +1,14 @@
-import {
+const {
   afterEach,
   beforeEach,
   describe,
   it
-} from 'mocha'
-import { expect } from 'chai'
+} = require('mocha')
+const { expect } = require('chai')
 
-import MockCreature from './creature.mock'
+const MockCreature = require('./creature.mock')
 
-import {
+const {
   roll,
   d20Roll,
   damageRoll,
@@ -17,10 +17,10 @@ import {
   getArmorClass,
   makeSavingThrow,
   applyAdvantageOrDisadvantage
-} from './helper'
+} = require('../../src/roll/helper')
 
-import armorMap from '../item/armorMap'
-import weaponMap from '../item/weaponMap'
+const armorMap = require('../exampleItems/armorMap')
+const weaponMap = require('../exampleItems/weaponMap')
 
 describe('roll helper', () => {
   let mockRoll

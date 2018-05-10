@@ -1,4 +1,4 @@
-import BaseCreature from '../creature/BaseCreature'
+const BaseCreature = require('../../src/creature/BaseCreature')
 
 const abilities = {
   strength: 10,
@@ -10,11 +10,11 @@ const abilities = {
 }
 const advantages = ['strength', 'dexterity', 'constitution']
 const disadvantages = ['intelligence', 'wisdom']
-const stats = {
-  ...abilities,
+const baseStats = {
   advantages,
   disadvantages
 }
+const stats = Object.assign({}, abilities, baseStats)
 
 const Creature = new BaseCreature(stats)
 
@@ -25,4 +25,4 @@ Creature.setInventory({ armor, weapon })
 Creature.setArmorEquipped('leather')
 Creature.setWeaponEquipped('dagger')
 
-export default Creature
+module.exports = Creature

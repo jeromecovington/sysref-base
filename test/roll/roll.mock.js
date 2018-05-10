@@ -1,6 +1,6 @@
 let increaseMockRoll = false
 
-export default function mockRoll (modifier = 5) {
+module.exports = function mockRoll (modifier = 5) {
   const r = increaseMockRoll ? 10 : 5
   increaseMockRoll = true
 
