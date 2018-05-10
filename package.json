@@ -4,7 +4,7 @@
   "description": "Base classes for emulating simple SRD (any version) mechanics",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/*.test.js",
+    "test": "mocha test/**/*.test.js",
     "lint": "standard **/*.js",
     "prepush": "npm run lint && npm test -q"
   },
