@@ -32,7 +32,7 @@ describe('BaseCreature', () => {
       disadvantages,
       hitPointsRollFunc: () => 10
     }
-    stats = Object.assign({}, abilities, baseStats);
+    stats = Object.assign({}, abilities, baseStats)
 
     Creature = new BaseCreature(stats)
   })
