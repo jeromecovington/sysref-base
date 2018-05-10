@@ -1,0 +1,33 @@
+{
+  "name": "sysref-base",
+  "version": "0.1.0",
+  "description": "Base classes for emulating simple SRD (any version) mechanics",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha **/*.test.js",
+    "lint": "eslint **/*.js",
+    "prepush": "npm run lint && npm test -q"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromecovington/sysref-base.git"
+  },
+  "keywords": [
+    "srd",
+    "games",
+    "game-mechanics"
+  ],
+  "author": "Jerome T.K. Covington",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/jeromecovington/sysref-base/issues"
+  },
+  "homepage": "https://github.com/jeromecovington/sysref-base#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "husky": "^0.14.3",
+    "mocha": "^5.1.1"
+  }
+}
