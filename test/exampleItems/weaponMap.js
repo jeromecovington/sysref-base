@@ -1,5 +1,4 @@
-// @todo include all possible starting inventory weapons for supported character classes.
-export default {
+module.exports = {
   dagger: {
     abilities: ['dexterity', 'strength'],
     classification: ['melee', 'ranged'],

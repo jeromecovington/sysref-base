@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   veryEasy: 5,
   easy: 10,
   medium: 15,

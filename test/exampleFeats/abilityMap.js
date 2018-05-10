@@ -1,4 +1,4 @@
-exports.default = {
+module.exports = {
   charisma: ['deception', 'intimidation', 'performance', 'persuasion'],
   constitution: [], // Constitution ability checks are rare, its modifier
   // primarily applies to hit points.

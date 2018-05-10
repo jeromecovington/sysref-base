@@ -1,5 +1,4 @@
-// @todo include all possible starting inventory armor for supported character classes.
-export default {
+module.exports = {
   robes: {
     modifier: 1
   },
