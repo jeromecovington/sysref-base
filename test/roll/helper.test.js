@@ -27,9 +27,7 @@ describe('roll helper', () => {
   let Creature
 
   beforeEach(() => {
-    /* eslint-disable global-require */
-    mockRoll = require('./roll.mock').default
-    /* eslint-enable */
+    mockRoll = require('./roll.mock')
     Creature = MockCreature
   })
 
