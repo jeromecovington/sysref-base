@@ -1,4 +1,4 @@
-import BaseCreature from '../creature/BaseCreature';
+import BaseCreature from '../creature/BaseCreature'
 
 const abilities = {
   strength: 10,
@@ -6,23 +6,23 @@ const abilities = {
   constitution: 3,
   intelligence: 4,
   wisdom: 5,
-  charisma: 6,
-};
-const advantages = ['strength', 'dexterity', 'constitution'];
-const disadvantages = ['intelligence', 'wisdom'];
+  charisma: 6
+}
+const advantages = ['strength', 'dexterity', 'constitution']
+const disadvantages = ['intelligence', 'wisdom']
 const stats = {
   ...abilities,
   advantages,
-  disadvantages,
-};
+  disadvantages
+}
 
-const Creature = new BaseCreature(stats);
+const Creature = new BaseCreature(stats)
 
-const armor = 'leather';
-const weapon = 'dagger';
+const armor = 'leather'
+const weapon = 'dagger'
 
-Creature.setInventory({ armor, weapon });
-Creature.setArmorEquipped('leather');
-Creature.setWeaponEquipped('dagger');
+Creature.setInventory({ armor, weapon })
+Creature.setArmorEquipped('leather')
+Creature.setWeaponEquipped('dagger')
 
-export default Creature;
+export default Creature

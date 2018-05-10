@@ -4,5 +4,5 @@ export default {
   medium: 15,
   hard: 20,
   veryHard: 25,
-  nearlyImpossible: 30,
-};
+  nearlyImpossible: 30
+}
