@@ -57,11 +57,8 @@ describe('roll base', () => {
       const abilities = {
         dexterity: 20
       }
-      const stats = {
-        ...abilities
-      }
 
-      const TargetCreature = new BaseCreature(stats)
+      const TargetCreature = new BaseCreature(abilities)
       const armor = 'platemail'
       const weapon = 'broadsword'
 
@@ -81,11 +78,8 @@ describe('roll base', () => {
       const abilities = {
         dexterity: 2
       }
-      const stats = {
-        ...abilities
-      }
 
-      const TargetCreature = new BaseCreature(stats)
+      const TargetCreature = new BaseCreature(abilities)
       const armor = 'robes'
       const weapon = 'club'
 
