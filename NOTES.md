@@ -1,8 +1,6 @@
 # Refactor
 + Rework any code that is not native NodeJS >= 8.
 + Rearchitect Roll to not reference specific item (weapon/armor) files.
-- Rolls need to return target, result, & pass/fail.
-- Remove race or class specific Creature methods & properties.
 - Export only Creature & Roll.
 
 # Make code accessible
