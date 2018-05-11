@@ -1,7 +1,7 @@
 # Refactor
 + Rework any code that is not native NodeJS >= 8.
 + Rearchitect Roll to not reference specific item (weapon/armor) files.
-- Export only Creature & Roll.
++ Export only Creature & Roll.
 
 # Make code accessible
 - Code comment documents of all methods & functions (include links to online SRD as needed).
