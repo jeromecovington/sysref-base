@@ -13,7 +13,7 @@ const Warrior = new BaseCreature({
   charisma: 6,
   advantages: ['strength'],
   disadvantages: ['dexterity'],
-  hitPointsRollFunc: () => roll(2,12)
+  hitPointsRollFunc: () => roll(2, 12)
 })
 Warrior.setHitPoints(0)
 Warrior.setInventory({ weapon: 'broadsword', armor: 'chainmail' })
@@ -29,7 +29,7 @@ const Orc = new BaseCreature({
   charisma: 1,
   advantages: ['strength'],
   disadvantages: ['intelligence', 'wisdom'],
-  hitPointsRollFunc: () => roll(1,10)
+  hitPointsRollFunc: () => roll(1, 10)
 })
 Orc.setHitPoints(0)
 Orc.setInventory({ weapon: 'warhammer', armor: 'leather' })
