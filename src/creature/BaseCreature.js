@@ -126,12 +126,4 @@ module.exports = class BaseCreature {
   getHitPoints () {
     return this.hitPoints
   }
-
-  setSpecialFlag (flag) {
-    this.specialFlags.push(flag)
-  }
-
-  getSpecialFlags () {
-    return this.specialFlags
-  }
 }
