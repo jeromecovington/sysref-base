@@ -1,7 +1,7 @@
 {
   "name": "sysref-base",
   "version": "0.1.0",
-  "description": "Base classes for emulating simple SRD (any version) mechanics",
+  "description": "Base classes for emulating basic System Reference Document game mechanics",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/**/*.test.js",
