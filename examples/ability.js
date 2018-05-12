@@ -14,7 +14,6 @@ const Theif = new BaseCreature({
   disadvantages: ['strength'],
   hitPointsRollFunc: () => roll(1, 10)
 })
-Theif.setHitPoints(0)
 
 console.log('The theif attempts to sneak past the sleeping giant.')
 const result = Roll.abilityCheck(Theif, 'stealth', 'medium')

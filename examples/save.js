@@ -14,12 +14,8 @@ const Wizard = new BaseCreature({
   disadvantages: ['dexterity', 'strength'],
   hitPointsRollFunc: () => roll(1, 6)
 })
-Wizard.setHitPoints(0)
-Wizard.setInventory({ weapon: 'staff', armor: 'robes' })
-Wizard.setWeaponEquipped('staff')
-Wizard.setArmorEquipped('robes')
 
-console.log('The wziard attempts to ward off the witch\'s curse')
+console.log('The wizard attempts to ward off the witch\'s curse')
 const result = Roll.savingThrow(Wizard, 'intelligence', 2, 'hard')
 if (result) {
   console.log('The wizard successfully wards off the witch\'s curse.')
