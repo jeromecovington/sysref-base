@@ -1,9 +1,11 @@
 # sysref-base
 ![Reginald the Rogue](img.png)
 
-Exports two classes - `BaseRoll` and `BaseCreature`, for use in implementing System Reference Document-like game mechanics.
+Exports two classes, `BaseRoll` and `BaseCreature`, for use in implementing System Reference Document-like game mechanics.
 
-The implementations here are generic enough that they _should_ approximate both the 3.5 & 5e editions.
+Two utility functions, `roll` and `d20Roll`, are also exported. These may be useful for example when setting a creature's initial hitpoints or when levelling up, et cetera.
+
+Character races and classes, as well as specific creature stats, are not considered to be part of the base mechanics, and are left as implementation details in userland. Other details such as weapons, armors, and treasures are likewise considered to be specific to a given game implementation.
 
 For background context please see the SRD. There is a browsable version of the 5th edition [here](https://www.5thsrd.org/).
 
@@ -16,4 +18,4 @@ Run the examples with:
 $ node examples/<example-name>
 ```
 
-Because the examples are based on algorithms with an element of chance, running them will give different results over multiple runs.
+Because the examples are based on algorithms containing elements of chance, running them will give different results over multiple runs.
