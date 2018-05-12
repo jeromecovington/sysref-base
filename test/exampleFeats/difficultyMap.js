@@ -1,3 +1,4 @@
+// https://www.5thsrd.org/rules/abilities/ability_checks/
 module.exports = {
   veryEasy: 5,
   easy: 10,

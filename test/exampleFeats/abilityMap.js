@@ -1,3 +1,4 @@
+// https://www.5thsrd.org/rules/abilities/ability_checks/
 module.exports = {
   charisma: ['deception', 'intimidation', 'performance', 'persuasion'],
   constitution: [], // Constitution ability checks are rare, its modifier

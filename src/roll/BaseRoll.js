@@ -24,6 +24,7 @@ module.exports = class BaseRoll {
     this.armorMap = armorMap
   }
 
+  // https://www.5thsrd.org/rules/abilities/ability_checks/
   abilityCheck (entity, skill, difficulty) {
     let ability = null
     const keys = Object.keys(this.abilityMap)
@@ -51,6 +52,9 @@ module.exports = class BaseRoll {
     return this.rollFunc(modifier)[1] >= this.difficultyMap[difficulty]
   }
 
+  // https://www.5thsrd.org/combat/making_an_attack/
+  // https://www.5thsrd.org/rules/abilities/strength/
+  // https://5thsrd.org/rules/abilities/dexterity/
   attackRoll (entity, target) {
     let abilities = []
     const modifiers = []
@@ -97,6 +101,7 @@ module.exports = class BaseRoll {
     return damage
   }
 
+  // https://www.5thsrd.org/rules/abilities/saving_throws/
   savingThrow (entity, ability, bonusOrPenalty = 0, difficulty) {
     const advantageOrDisadvantage = getAdvantageOrDisadvantage(entity, ability)
 

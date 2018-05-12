@@ -20,6 +20,25 @@ function damageRoll (weapon) {
   return roll(minMax[0], minMax[1])
 }
 
+function getModifier (abilityScore) {
+  return Math.floor((abilityScore - 10) / 2)
+}
+
+function getArmorClass (entity, armorMap) {
+  const armor = armorMap[entity.getArmorEquipped()]
+  const armorModifier = armor ? armor.modifier : 0
+  // https://5thsrd.org/rules/abilities/dexterity/
+  const dexterityModifier = getModifier(entity.getAbility('dexterity')) || 0
+
+  return armorModifier + dexterityModifier
+}
+
+// https://www.5thsrd.org/rules/abilities/saving_throws/
+function makeSavingThrow (rollFunc = d20Roll, entity, ability, bonusOrPenalty) {
+  return rollFunc(getModifier(entity.getAbility(ability)) + entity.getProficiencyBonus() + bonusOrPenalty)[1]
+}
+
+// https://www.5thsrd.org/rules/advantage_and_disadvantage/
 function getAdvantageOrDisadvantage (entity, ability) {
   let advantageOrDisadvantage = null
 
@@ -34,22 +53,7 @@ function getAdvantageOrDisadvantage (entity, ability) {
   return advantageOrDisadvantage
 }
 
-function getModifier (abilityScore) {
-  return Math.floor((abilityScore - 10) / 2)
-}
-
-function getArmorClass (entity, armorMap) {
-  const armor = armorMap[entity.getArmorEquipped()]
-  const armorModifier = armor ? armor.modifier : 0
-  const dexterityModifier = getModifier(entity.getAbility('dexterity')) || 0
-
-  return armorModifier + dexterityModifier
-}
-
-function makeSavingThrow (rollFunc = d20Roll, entity, ability, bonusOrPenalty) {
-  return rollFunc(getModifier(entity.getAbility(ability)) + entity.getProficiencyBonus() + bonusOrPenalty)[1]
-}
-
+// https://www.5thsrd.org/rules/advantage_and_disadvantage/
 function applyAdvantageOrDisadvantage (roll1, roll2, advantageOrDisadvantage = 'advantage') {
   if (advantageOrDisadvantage === 'advantage') {
     return Math.max(roll1, roll2)
