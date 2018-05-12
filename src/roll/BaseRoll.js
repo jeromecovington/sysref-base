@@ -9,17 +9,21 @@ const {
   applyAdvantageOrDisadvantage
 } = require('./helper')
 
+const abilityMapDefault = require('./abilityMap')
+const difficultyMapDefault = require('./difficultyMap')
+
 module.exports = class BaseRoll {
-  constructor ({
-    rollFunc,
-    abilityMap,
-    difficultyMap,
-    weaponMap,
-    armorMap
-  }) {
+  constructor (config) {
+    const {
+      rollFunc,
+      abilityMap,
+      difficultyMap,
+      weaponMap,
+      armorMap
+    } = config || {}
     this.rollFunc = rollFunc || d20Roll
-    this.abilityMap = abilityMap
-    this.difficultyMap = difficultyMap
+    this.abilityMap = abilityMap || abilityMapDefault
+    this.difficultyMap = difficultyMap || difficultyMapDefault
     this.weaponMap = weaponMap
     this.armorMap = armorMap
   }

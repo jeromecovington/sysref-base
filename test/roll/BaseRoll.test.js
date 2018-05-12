@@ -11,8 +11,6 @@ const BaseCreature = require('../../src/creature/BaseCreature')
 
 const MockCreature = require('./creature.mock')
 
-const abilityMap = require('../exampleFeats/abilityMap')
-const difficultyMap = require('../exampleFeats/difficultyMap')
 const weaponMap = require('../exampleItems/weaponMap')
 const armorMap = require('../exampleItems/armorMap')
 
@@ -25,8 +23,6 @@ describe('roll base', () => {
     mockRoll = require('./roll.mock')
     Roll = new BaseRoll({
       rollFunc: mockRoll,
-      abilityMap,
-      difficultyMap,
       weaponMap,
       armorMap
     })

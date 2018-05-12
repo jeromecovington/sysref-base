@@ -1,13 +1,7 @@
 const { BaseCreature, BaseRoll } = require('../index')
 const { roll } = require('../src/roll/helper')
 
-const abilityMap = require('../test/exampleFeats/abilityMap')
-const difficultyMap = require('../test/exampleFeats/difficultyMap')
-
-const Roll = new BaseRoll({
-  abilityMap,
-  difficultyMap
-})
+const Roll = new BaseRoll()
 
 const Wizard = new BaseCreature({
   strength: 5,
