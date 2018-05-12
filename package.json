@@ -27,6 +27,9 @@
     "url": "https://github.com/jeromecovington/sysref-base/issues"
   },
   "homepage": "https://github.com/jeromecovington/sysref-base#readme",
+  "engines": {
+    "node" : ">=8"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "husky": "^0.14.3",
