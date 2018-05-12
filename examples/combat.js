@@ -1,5 +1,4 @@
-const { BaseCreature, BaseRoll } = require('../index')
-const { roll } = require('../src/roll/helper')
+const { BaseCreature, BaseRoll, roll } = require('../index')
 
 const weaponMap = require('../test/exampleItems/weaponMap')
 const armorMap = require('../test/exampleItems/armorMap')
