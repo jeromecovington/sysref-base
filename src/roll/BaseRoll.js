@@ -13,14 +13,14 @@ const abilityMapDefault = require('./abilityMap')
 const difficultyMapDefault = require('./difficultyMap')
 
 module.exports = class BaseRoll {
-  constructor (config) {
+  constructor (config = {}) {
     const {
       rollFunc,
       abilityMap,
       difficultyMap,
       weaponMap,
       armorMap
-    } = config || {}
+    } = config
     this.rollFunc = rollFunc || d20Roll
     this.abilityMap = abilityMap || abilityMapDefault
     this.difficultyMap = difficultyMap || difficultyMapDefault
