@@ -45,6 +45,17 @@ describe('BaseCreature', () => {
     Creature = null
   })
 
+  it('should set abilities to 0 and stats to empty arrays if not provided', () => {
+    const EmptyCreature = new BaseCreature({ hitPointsRollFunc: () => 10 })
+    const abilitiesKeys = Object.keys(abilities)
+
+    abilitiesKeys.forEach((ability) => {
+      expect(EmptyCreature.getAbility(ability)).to.equal(0)
+    })
+    expect(EmptyCreature.getAdvantages()).to.deep.equal([])
+    expect(EmptyCreature.getDisadvantages()).to.deep.equal([])
+  })
+
   it('should have all abilities when initialized', () => {
     const abilitiesKeys = Object.keys(abilities)
 
@@ -67,6 +78,14 @@ describe('BaseCreature', () => {
 
     Creature.setAbility(ability, { modifier })
     expect(Creature.getAbility(ability)).to.equal(abilities.strength + modifier)
+  })
+
+  it('should throw if not passed an absolute or modifier param', () => {
+    const ability = 'strength'
+
+    expect(Creature.setAbility.bind(Creature, ability, {})).to.throw(
+      'Must provide either absolute or modifier to setAbility'
+    )
   })
 
   it('should allow to get and set proficiency bonus', () => {
@@ -92,6 +111,11 @@ describe('BaseCreature', () => {
   })
 
   it('should allow to set and get inventory', () => {
+    const emptyExpected = {
+      armor: [],
+      weapon: [],
+      treasure: []
+    }
     const armor = 'leather'
     const weapon = 'dagger'
     const addedWeapon = 'staff'
@@ -106,6 +130,10 @@ describe('BaseCreature', () => {
       weapon: [weapon, addedWeapon],
       treasure: [treasure]
     }
+
+    expect(Creature.getInventory()).to.deep.equal(emptyExpected)
+    Creature.setInventory({})
+    expect(Creature.getInventory()).to.deep.equal(emptyExpected)
 
     Creature.setInventory({ armor, weapon, treasure })
     expect(Creature.getInventory()).to.deep.equal(initialExpected)

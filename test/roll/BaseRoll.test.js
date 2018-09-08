@@ -34,6 +34,12 @@ describe('roll base', () => {
     mockRoll = null
   })
 
+  describe('defaults', () => {
+    it('should use defaults when no config params are provided', () => {
+      expect(typeof new BaseRoll()).to.equal('object')
+    })
+  })
+
   describe('abilityCheck', () => {
     it('should apply advantage and veryEasy difficulty to ability check', () => {
       const result = Roll.abilityCheck(Creature, 'athletics', 'easy')
@@ -45,6 +51,18 @@ describe('roll base', () => {
       const result = Roll.abilityCheck(Creature, 'animal-handling', 'nearlyImpossible')
 
       expect(result).to.equal(false)
+    })
+
+    it('should apply neither advantage nor disadvantage', () => {
+      const result = Roll.abilityCheck(Creature, 'performance', 'medium')
+
+      expect(result).to.equal(false)
+    })
+
+    it('should throw when provided invalid skill', () => {
+      expect(Roll.abilityCheck.bind(Roll, Creature, 'foo', 'easy')).to.throw(
+        'No valid ability derived for foo'
+      )
     })
   })
 
@@ -87,6 +105,73 @@ describe('roll base', () => {
 
       expect(result).to.be.above(0)
     })
+
+    it('should throw with invalid weapon', () => {
+      Creature.setInventory({ weapon: 'foo' })
+      Creature.setWeaponEquipped('foo')
+
+      const TargetCreature = new BaseCreature({})
+
+      expect(Roll.attackRoll.bind(Roll, Creature, TargetCreature)).to.throw(
+        'No valid weapon for foo'
+      )
+    })
+
+    it('should handle unlucky roll', () => {
+      const UnluckyRoll = new BaseRoll({
+        rollFunc: () => [1, 20],
+        weaponMap,
+        armorMap
+      })
+
+      Creature.setInventory({ weapon: 'broadsword' })
+      Creature.setWeaponEquipped('broadsword')
+
+      const abilities = {
+        dexterity: 2
+      }
+
+      const TargetCreature = new BaseCreature(abilities)
+      const armor = 'robes'
+      const weapon = 'club'
+
+      TargetCreature.setInventory({ armor, weapon })
+      TargetCreature.setArmorEquipped('robes')
+      TargetCreature.setWeaponEquipped('club')
+
+      const result = UnluckyRoll.attackRoll(Creature, TargetCreature)
+
+      expect(result).to.equal(0)
+    })
+
+    it('should handle lucky roll', () => {
+      const LuckyRoll = new BaseRoll({
+        rollFunc: () => [20, 1],
+        weaponMap,
+        armorMap
+      })
+
+      Creature.setInventory({ weapon: 'broadsword' })
+      Creature.setWeaponEquipped('broadsword')
+
+      const abilities = {
+        dexterity: 2
+      }
+
+      const TargetCreature = new BaseCreature(abilities)
+      const armor = 'platemail'
+      const weapon = 'broadsword'
+
+      TargetCreature.setInventory({ armor, weapon })
+      TargetCreature.setArmorEquipped('platemail')
+      TargetCreature.setWeaponEquipped('broadsword')
+
+      const result = LuckyRoll.attackRoll(Creature, TargetCreature)
+
+      console.log({ result })
+
+      expect(result).to.be.above(0)
+    })
   })
 
   describe('savingThrow', () => {
@@ -98,6 +183,12 @@ describe('roll base', () => {
 
     it('should apply disadvantage, no bonus and nearlyImpossible difficulty to saving throw', () => {
       const result = Roll.savingThrow(Creature, 'wisdom', 1, 'nearlyImpossible')
+
+      expect(result).to.equal(false)
+    })
+
+    it('should apply neither advantage nor disadvantage, no bonus or penalty and nearlyImpossible difficulty to saving throw', () => {
+      const result = Roll.savingThrow(Creature, 'charisma', undefined, 'nearlyImpossible')
 
       expect(result).to.equal(false)
     })

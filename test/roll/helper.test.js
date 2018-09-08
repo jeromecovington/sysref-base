@@ -115,6 +115,12 @@ describe('roll helper', () => {
 
       expect(result).to.equal(-2)
     })
+
+    it('should return expected armor class using default values', () => {
+      const result = getArmorClass(Creature, {})
+
+      expect(result).to.equal(-4)
+    })
   })
 
   describe('applyAdvantageOrDisadvantage', () => {
@@ -122,8 +128,10 @@ describe('roll helper', () => {
     const roll2 = 10
 
     it('should apply advantage', () => {
-      const result = applyAdvantageOrDisadvantage(roll1, roll2, 'advantage')
+      const defaultResult = applyAdvantageOrDisadvantage(roll1, roll2)
+      expect(defaultResult).to.equal(10)
 
+      const result = applyAdvantageOrDisadvantage(roll1, roll2, 'advantage')
       expect(result).to.equal(10)
     })
 
@@ -132,13 +140,21 @@ describe('roll helper', () => {
 
       expect(result).to.equal(5)
     })
+
+    it('should throw if supplied invalid argument', () => {
+      expect(applyAdvantageOrDisadvantage.bind(this, roll1, roll2, 'foo')).to.throw(
+        'foo is not a valid value for advantageOrDisadvantage'
+      )
+    })
   })
 
   describe('makeSavingThrow', () => {
     it('should make the saving throw', () => {
       const result = makeSavingThrow(mockRoll, Creature, 'strength', 1)
-
       expect(result).to.equal(11)
+
+      const d20Range = makeSavingThrow(undefined, Creature, 'strength', 0)
+      expect(d20Range).to.be.within(1, 20)
     })
   })
 })

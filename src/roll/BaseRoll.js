@@ -13,14 +13,14 @@ const abilityMapDefault = require('./abilityMap')
 const difficultyMapDefault = require('./difficultyMap')
 
 module.exports = class BaseRoll {
-  constructor (config) {
+  constructor (config = {}) {
     const {
       rollFunc,
       abilityMap,
       difficultyMap,
       weaponMap,
       armorMap
-    } = config || {}
+    } = config
     this.rollFunc = rollFunc || d20Roll
     this.abilityMap = abilityMap || abilityMapDefault
     this.difficultyMap = difficultyMap || difficultyMapDefault
@@ -64,21 +64,14 @@ module.exports = class BaseRoll {
     const modifiers = []
     const weapon = entity.getWeaponEquipped()
 
-    if (this.weaponMap[weapon] && this.weaponMap[weapon].abilities) {
-      abilities = this.weaponMap[weapon].abilities
+    if (!this.weaponMap[weapon]) {
+      throw new Error(`No valid weapon for ${weapon}`)
     }
 
-    if (!abilities.length) {
-      throw new Error(`No valid abilities for ${weapon}`)
-    }
-
+    abilities = this.weaponMap[weapon].abilities
     abilities.forEach((ability) => {
       modifiers.push(getModifier(entity.getAbility(ability)))
     })
-
-    if (!modifiers.length) {
-      throw new Error(`No valid modifiers for ${abilities}`)
-    }
 
     const maxModifier = Math.max(modifiers)
     const theRoll = this.rollFunc(maxModifier)

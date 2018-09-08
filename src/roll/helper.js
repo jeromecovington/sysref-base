@@ -28,7 +28,7 @@ function getArmorClass (entity, armorMap) {
   const armor = armorMap[entity.getArmorEquipped()]
   const armorModifier = armor ? armor.modifier : 0
   // https://5thsrd.org/rules/abilities/dexterity/
-  const dexterityModifier = getModifier(entity.getAbility('dexterity')) || 0
+  const dexterityModifier = getModifier(entity.getAbility('dexterity'))
 
   return armorModifier + dexterityModifier
 }
