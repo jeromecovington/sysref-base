@@ -186,5 +186,11 @@ describe('roll base', () => {
 
       expect(result).to.equal(false)
     })
+
+    it('should apply neither advantage nor disadvantage, no bonus or penalty and nearlyImpossible difficulty to saving throw', () => {
+      const result = Roll.savingThrow(Creature, 'charisma', undefined, 'nearlyImpossible')
+
+      expect(result).to.equal(false)
+    })
   })
 })
