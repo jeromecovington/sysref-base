@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test/**/*.test.js",
     "lint": "standard **/*.js",
-    "coverage": "",
+    "coverage": "nyc --reporter=lcov npm test && nyc report",
     "prepush": "npm run lint && npm test -q"
   },
   "repository": {
