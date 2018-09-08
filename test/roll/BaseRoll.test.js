@@ -105,6 +105,17 @@ describe('roll base', () => {
 
       expect(result).to.be.above(0)
     })
+
+    it('should throw with invalid weapon', () => {
+      Creature.setInventory({ weapon: 'foo' })
+      Creature.setWeaponEquipped('foo')
+
+      const TargetCreature = new BaseCreature({})
+
+      expect(Roll.attackRoll.bind(Roll, Creature, TargetCreature)).to.throw(
+        'No valid weapon for foo'
+      )
+    })
   })
 
   describe('savingThrow', () => {
