@@ -116,6 +116,62 @@ describe('roll base', () => {
         'No valid weapon for foo'
       )
     })
+
+    it('should handle unlucky roll', () => {
+      const UnluckyRoll = new BaseRoll({
+        rollFunc: () => [1, 20],
+        weaponMap,
+        armorMap
+      })
+
+      Creature.setInventory({ weapon: 'broadsword' })
+      Creature.setWeaponEquipped('broadsword')
+
+      const abilities = {
+        dexterity: 2
+      }
+
+      const TargetCreature = new BaseCreature(abilities)
+      const armor = 'robes'
+      const weapon = 'club'
+
+      TargetCreature.setInventory({ armor, weapon })
+      TargetCreature.setArmorEquipped('robes')
+      TargetCreature.setWeaponEquipped('club')
+
+      const result = UnluckyRoll.attackRoll(Creature, TargetCreature)
+
+      expect(result).to.equal(0)
+    })
+
+    it('should handle lucky roll', () => {
+      const LuckyRoll = new BaseRoll({
+        rollFunc: () => [20, 1],
+        weaponMap,
+        armorMap
+      })
+
+      Creature.setInventory({ weapon: 'broadsword' })
+      Creature.setWeaponEquipped('broadsword')
+
+      const abilities = {
+        dexterity: 2
+      }
+
+      const TargetCreature = new BaseCreature(abilities)
+      const armor = 'platemail'
+      const weapon = 'broadsword'
+
+      TargetCreature.setInventory({ armor, weapon })
+      TargetCreature.setArmorEquipped('platemail')
+      TargetCreature.setWeaponEquipped('broadsword')
+
+      const result = LuckyRoll.attackRoll(Creature, TargetCreature)
+
+      console.log({ result })
+
+      expect(result).to.be.above(0)
+    })
   })
 
   describe('savingThrow', () => {
