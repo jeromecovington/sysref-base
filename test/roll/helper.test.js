@@ -122,8 +122,10 @@ describe('roll helper', () => {
     const roll2 = 10
 
     it('should apply advantage', () => {
-      const result = applyAdvantageOrDisadvantage(roll1, roll2, 'advantage')
+      const defaultResult = applyAdvantageOrDisadvantage(roll1, roll2)
+      expect(defaultResult).to.equal(10)
 
+      const result = applyAdvantageOrDisadvantage(roll1, roll2, 'advantage')
       expect(result).to.equal(10)
     })
 
@@ -131,6 +133,12 @@ describe('roll helper', () => {
       const result = applyAdvantageOrDisadvantage(roll1, roll2, 'disadvantage')
 
       expect(result).to.equal(5)
+    })
+
+    it('should throw if supplied invalid argument', () => {
+      expect(applyAdvantageOrDisadvantage.bind(this, roll1, roll2, 'foo')).to.throw(
+        'foo is not a valid value for advantageOrDisadvantage'
+      )
     })
   })
 
