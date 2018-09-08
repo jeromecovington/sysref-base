@@ -52,6 +52,12 @@ describe('roll base', () => {
 
       expect(result).to.equal(false)
     })
+
+    it('should throw when provided invalid skill', () => {
+      expect(Roll.abilityCheck.bind(Roll, Creature, 'foo', 'easy')).to.throw(
+        'No valid ability derived for foo'
+      )
+    })
   })
 
   describe('attackRoll', () => {
