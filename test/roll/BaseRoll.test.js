@@ -34,6 +34,12 @@ describe('roll base', () => {
     mockRoll = null
   })
 
+  describe('defaults', () => {
+    it('should use defaults when no config params are provided', () => {
+      expect(typeof new BaseRoll()).to.equal('object')
+    })
+  })
+
   describe('abilityCheck', () => {
     it('should apply advantage and veryEasy difficulty to ability check', () => {
       const result = Roll.abilityCheck(Creature, 'athletics', 'easy')
