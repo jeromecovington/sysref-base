@@ -69,6 +69,14 @@ describe('BaseCreature', () => {
     expect(Creature.getAbility(ability)).to.equal(abilities.strength + modifier)
   })
 
+  it('should throw if not passed an absolute or modifier param', () => {
+    const ability = 'strength'
+
+    expect(Creature.setAbility.bind(Creature, ability, {})).to.throw(
+      'Must provide either absolute or modifier to setAbility'
+    )
+  })
+
   it('should allow to get and set proficiency bonus', () => {
     const bonus = 2
 
