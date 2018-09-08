@@ -115,6 +115,12 @@ describe('roll helper', () => {
 
       expect(result).to.equal(-2)
     })
+
+    it('should return expected armor class using default values', () => {
+      const result = getArmorClass(Creature, {})
+
+      expect(result).to.equal(-4)
+    })
   })
 
   describe('applyAdvantageOrDisadvantage', () => {
