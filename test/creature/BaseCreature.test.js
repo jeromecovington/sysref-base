@@ -45,6 +45,17 @@ describe('BaseCreature', () => {
     Creature = null
   })
 
+  it('should set abilities to 0 and stats to empty arrays if not provided', () => {
+    const EmptyCreature = new BaseCreature({ hitPointsRollFunc: () => 10 })
+    const abilitiesKeys = Object.keys(abilities)
+
+    abilitiesKeys.forEach((ability) => {
+      expect(EmptyCreature.getAbility(ability)).to.equal(0)
+    })
+    expect(EmptyCreature.getAdvantages()).to.deep.equal([])
+    expect(EmptyCreature.getDisadvantages()).to.deep.equal([])
+  })
+
   it('should have all abilities when initialized', () => {
     const abilitiesKeys = Object.keys(abilities)
 
