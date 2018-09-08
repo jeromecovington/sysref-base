@@ -68,21 +68,10 @@ module.exports = class BaseRoll {
       throw new Error(`No valid weapon for ${weapon}`)
     }
 
-    if (this.weaponMap[weapon].abilities) {
-      abilities = this.weaponMap[weapon].abilities
-    }
-
-    if (!abilities.length) {
-      throw new Error(`No valid abilities for ${weapon}`)
-    }
-
+    abilities = this.weaponMap[weapon].abilities
     abilities.forEach((ability) => {
       modifiers.push(getModifier(entity.getAbility(ability)))
     })
-
-    if (!modifiers.length) {
-      throw new Error(`No valid modifiers for ${abilities}`)
-    }
 
     const maxModifier = Math.max(modifiers)
     const theRoll = this.rollFunc(maxModifier)
