@@ -64,7 +64,11 @@ module.exports = class BaseRoll {
     const modifiers = []
     const weapon = entity.getWeaponEquipped()
 
-    if (this.weaponMap[weapon] && this.weaponMap[weapon].abilities) {
+    if (!this.weaponMap[weapon]) {
+      throw new Error(`No valid weapon for ${weapon}`)
+    }
+
+    if (this.weaponMap[weapon].abilities) {
       abilities = this.weaponMap[weapon].abilities
     }
 
