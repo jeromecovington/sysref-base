@@ -111,6 +111,11 @@ describe('BaseCreature', () => {
   })
 
   it('should allow to set and get inventory', () => {
+    const emptyExpected = {
+      armor: [],
+      weapon: [],
+      treasure: []
+    }
     const armor = 'leather'
     const weapon = 'dagger'
     const addedWeapon = 'staff'
@@ -125,6 +130,10 @@ describe('BaseCreature', () => {
       weapon: [weapon, addedWeapon],
       treasure: [treasure]
     }
+
+    expect(Creature.getInventory()).to.deep.equal(emptyExpected)
+    Creature.setInventory({})
+    expect(Creature.getInventory()).to.deep.equal(emptyExpected)
 
     Creature.setInventory({ armor, weapon, treasure })
     expect(Creature.getInventory()).to.deep.equal(initialExpected)
