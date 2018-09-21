@@ -34,7 +34,7 @@ function getArmorClass (entity, armorMap) {
 }
 
 // https://www.5thsrd.org/rules/abilities/saving_throws/
-function makeSavingThrow (rollFunc = d20Roll, entity, ability, bonusOrPenalty) {
+function makeSavingThrow (entity, ability, bonusOrPenalty, rollFunc = d20Roll) {
   return rollFunc(getModifier(entity.getAbility(ability)) + entity.getProficiencyBonus() + bonusOrPenalty)[1]
 }
 

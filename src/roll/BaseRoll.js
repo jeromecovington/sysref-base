@@ -99,16 +99,16 @@ module.exports = class BaseRoll {
   }
 
   // https://www.5thsrd.org/rules/abilities/saving_throws/
-  savingThrow (entity, ability, bonusOrPenalty = 0, difficulty) {
+  savingThrow (entity, ability, difficulty, bonusOrPenalty = 0) {
     const advantageOrDisadvantage = getAdvantageOrDisadvantage(entity, ability)
 
     if (advantageOrDisadvantage) {
-      const roll1 = makeSavingThrow(this.rollFunc, entity, ability, bonusOrPenalty)
-      const roll2 = makeSavingThrow(this.rollFunc, entity, ability, bonusOrPenalty)
+      const roll1 = makeSavingThrow(entity, ability, bonusOrPenalty, this.rollFunc)
+      const roll2 = makeSavingThrow(entity, ability, bonusOrPenalty, this.rollFunc)
 
       return applyAdvantageOrDisadvantage(roll1, roll2, advantageOrDisadvantage) >= this.difficultyMap[difficulty]
     }
 
-    return makeSavingThrow(this.rollFunc, entity, ability, bonusOrPenalty) >= this.difficultyMap[difficulty]
+    return makeSavingThrow(entity, ability, bonusOrPenalty, this.rollFunc) >= this.difficultyMap[difficulty]
   }
 }
