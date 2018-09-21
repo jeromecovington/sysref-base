@@ -168,8 +168,6 @@ describe('roll base', () => {
 
       const result = LuckyRoll.attackRoll(Creature, TargetCreature)
 
-      console.log({ result })
-
       expect(result).to.be.above(0)
     })
   })
