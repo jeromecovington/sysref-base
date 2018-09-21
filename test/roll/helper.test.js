@@ -150,10 +150,10 @@ describe('roll helper', () => {
 
   describe('makeSavingThrow', () => {
     it('should make the saving throw', () => {
-      const result = makeSavingThrow(mockRoll, Creature, 'strength', 1)
+      const result = makeSavingThrow(Creature, 'strength', 1, mockRoll)
       expect(result).to.equal(11)
 
-      const d20Range = makeSavingThrow(undefined, Creature, 'strength', 0)
+      const d20Range = makeSavingThrow(Creature, 'strength', 0)
       expect(d20Range).to.be.within(1, 20)
     })
   })

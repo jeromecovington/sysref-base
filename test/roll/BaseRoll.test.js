@@ -176,19 +176,19 @@ describe('roll base', () => {
 
   describe('savingThrow', () => {
     it('should apply advantage, no bonus and easy difficulty to saving throw', () => {
-      const result = Roll.savingThrow(Creature, 'strength', 1, 'easy')
+      const result = Roll.savingThrow(Creature, 'strength', 'easy', 1)
 
       expect(result).to.equal(true)
     })
 
     it('should apply disadvantage, no bonus and nearlyImpossible difficulty to saving throw', () => {
-      const result = Roll.savingThrow(Creature, 'wisdom', 1, 'nearlyImpossible')
+      const result = Roll.savingThrow(Creature, 'wisdom', 'nearlyImpossible', 1)
 
       expect(result).to.equal(false)
     })
 
     it('should apply neither advantage nor disadvantage, no bonus or penalty and nearlyImpossible difficulty to saving throw', () => {
-      const result = Roll.savingThrow(Creature, 'charisma', undefined, 'nearlyImpossible')
+      const result = Roll.savingThrow(Creature, 'charisma', 'nearlyImpossible')
 
       expect(result).to.equal(false)
     })
