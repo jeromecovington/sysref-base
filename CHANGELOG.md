@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Breaking: add "real" armor map and update armor class algorithm [#3](https://github.com/jeromecovington/sysref-base/pull/5)
+- Breaking: add "real" armor map and update armor class algorithm [#5](https://github.com/jeromecovington/sysref-base/pull/5)
+- Add character generation example [#4](https://github.com/jeromecovington/sysref-base/pull/4)
 
 ## 0.2.0
 
