@@ -1,6 +1,6 @@
 {
   "name": "sysref-base",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Base classes for emulating basic System Reference Document game mechanics",
   "main": "index.js",
   "scripts": {
