@@ -11,8 +11,8 @@ const BaseCreature = require('../../src/creature/BaseCreature')
 
 const MockCreature = require('./creature.mock')
 
-const weaponMap = require('../exampleItems/weaponMap')
-const armorMap = require('../exampleItems/armorMap')
+const weaponMap = require('../../src/weapons/map')
+const armorMap = require('../../src/armor/map')
 
 describe('roll base', () => {
   let Roll
@@ -74,11 +74,11 @@ describe('roll base', () => {
 
       const TargetCreature = new BaseCreature(abilities)
       const armor = 'platemail'
-      const weapon = 'broadsword'
+      const weapon = 'longSword'
 
       TargetCreature.setInventory({ armor, weapon })
       TargetCreature.setArmorEquipped('platemail')
-      TargetCreature.setWeaponEquipped('broadsword')
+      TargetCreature.setWeaponEquipped('longSword')
 
       const result = Roll.attackRoll(Creature, TargetCreature)
 
@@ -86,8 +86,8 @@ describe('roll base', () => {
     })
 
     it('should hit with > 0 damage', () => {
-      Creature.setInventory({ weapon: 'broadsword' })
-      Creature.setWeaponEquipped('broadsword')
+      Creature.setInventory({ weapon: 'longSword' })
+      Creature.setWeaponEquipped('longSword')
 
       const abilities = {
         dexterity: 2
@@ -124,8 +124,8 @@ describe('roll base', () => {
         armorMap
       })
 
-      Creature.setInventory({ weapon: 'broadsword' })
-      Creature.setWeaponEquipped('broadsword')
+      Creature.setInventory({ weapon: 'longSword' })
+      Creature.setWeaponEquipped('longSword')
 
       const abilities = {
         dexterity: 2
@@ -151,8 +151,8 @@ describe('roll base', () => {
         armorMap
       })
 
-      Creature.setInventory({ weapon: 'broadsword' })
-      Creature.setWeaponEquipped('broadsword')
+      Creature.setInventory({ weapon: 'longSword' })
+      Creature.setWeaponEquipped('longSword')
 
       const abilities = {
         dexterity: 2
@@ -160,11 +160,11 @@ describe('roll base', () => {
 
       const TargetCreature = new BaseCreature(abilities)
       const armor = 'platemail'
-      const weapon = 'broadsword'
+      const weapon = 'longSword'
 
       TargetCreature.setInventory({ armor, weapon })
       TargetCreature.setArmorEquipped('platemail')
-      TargetCreature.setWeaponEquipped('broadsword')
+      TargetCreature.setWeaponEquipped('longSword')
 
       const result = LuckyRoll.attackRoll(Creature, TargetCreature)
 

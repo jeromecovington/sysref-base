@@ -20,7 +20,7 @@ const {
 } = require('../../src/roll/helper')
 
 const armorMap = require('../../src/armor/map')
-const weaponMap = require('../exampleItems/weaponMap')
+const weaponMap = require('../../src/weapons/map')
 
 describe('roll helper', () => {
   let mockRoll
