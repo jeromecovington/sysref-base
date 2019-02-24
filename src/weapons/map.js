@@ -118,7 +118,7 @@ module.exports = {
     cost: 10,
     minMax: [1, 12]
   },
-  longsword: {
+  longSword: {
     abilities: ['strength'],
     classification: ['melee'],
     cost: 15,
