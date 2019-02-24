@@ -26,11 +26,22 @@ function getModifier (abilityScore) {
 
 function getArmorClass (entity, armorMap) {
   const armor = armorMap[entity.getArmorEquipped()]
-  const armorModifier = armor ? armor.modifier : 0
-  // https://5thsrd.org/rules/abilities/dexterity/
-  const dexterityModifier = getModifier(entity.getAbility('dexterity'))
+  if (armor) {
+    const armorModifier = armor ? armor.modifier : 0
 
-  return armorModifier + dexterityModifier
+    // https://5thsrd.org/rules/abilities/dexterity/
+    let dexterityModifier = 0;
+    if (armor.usesDexterity) {
+      dexterityModifier = getModifier(entity.getAbility('dexterity'))
+    }
+    if (armor.maxDexterity) {
+      dexterityModifier = Math.min(dexterityModifier, armor.maxDexterity);
+    }
+
+    return armorModifier + dexterityModifier
+  }
+
+  return getModifier(entity.getAbility('dexterity'))
 }
 
 // https://www.5thsrd.org/rules/abilities/saving_throws/

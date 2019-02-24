@@ -19,7 +19,7 @@ const {
   applyAdvantageOrDisadvantage
 } = require('../../src/roll/helper')
 
-const armorMap = require('../exampleItems/armorMap')
+const armorMap = require('../../src/armor/map')
 const weaponMap = require('../exampleItems/weaponMap')
 
 describe('roll helper', () => {
@@ -113,10 +113,11 @@ describe('roll helper', () => {
     it('should return expected armor class', () => {
       const result = getArmorClass(Creature, armorMap)
 
-      expect(result).to.equal(-2)
+      expect(result).to.equal(7)
     })
 
     it('should return expected armor class using default values', () => {
+      // Emulate no matching armor, or effectively no worn armor.
       const result = getArmorClass(Creature, {})
 
       expect(result).to.equal(-4)
