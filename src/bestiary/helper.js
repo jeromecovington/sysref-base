@@ -1,6 +1,6 @@
 const BaseCreature = require('../creature/BaseCreature')
 
-module.exports = function provider ({
+function provider ({
   strength,
   dexterity,
   constitution,
@@ -35,4 +35,8 @@ module.exports = function provider ({
   creature.name = name
 
   return creature
+}
+
+module.exports = {
+  provider
 }
