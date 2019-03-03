@@ -55,12 +55,6 @@ module.exports = {
     cost: 1,
     minMax: [1, 4]
   },
-  sickle: {
-    abilities: ['strength'],
-    classification: ['melee', 'ranged'],
-    cost: 1,
-    minMax: [1, 6]
-  },
   lightCrossbow: {
     abilities: ['strength'],
     classification: ['ranged'],
@@ -162,4 +156,4 @@ module.exports = {
     hasAmmunition: true,
     minMax: [1, 8]
   }
-};
+}
