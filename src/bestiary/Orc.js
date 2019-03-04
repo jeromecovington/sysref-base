@@ -12,8 +12,8 @@ module.exports = provider({
   disadvantages: [],
   hitPointsRollFunc: () => roll(2, 16),
   hitPointsModifier: 6,
-  armor: 'hide',
-  weapon: 'greatAxe',
-  treasure: 100,
+  armor: ['hide'],
+  weapon: ['greatAxe', 'javelin'],
+  treasure: [100],
   name: 'Orc'
 })
