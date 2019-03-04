@@ -11,9 +11,9 @@ function provider ({
   disadvantages,
   hitPointsRollFunc,
   hitPointsModifier = 0,
-  armor,
-  weapon,
-  treasure,
+  armor = [],
+  weapon = [],
+  treasure = [],
   name
 }) {
   const creature = new BaseCreature({
@@ -29,9 +29,32 @@ function provider ({
   })
 
   creature.setHitPoints(hitPointsModifier)
-  creature.setInventory({ armor, weapon, treasure })
-  creature.setArmorEquipped(armor)
-  creature.setWeaponEquipped(weapon)
+
+  if (armor) {
+    creature.setInventory({ armor })
+    creature.setArmorEquipped(armor)
+  }
+
+  if (armor.length) {
+    armor.forEach(a => {
+      creature.setInventory({ armor: a })
+    })
+    creature.setArmorEquipped(armor[0])
+  }
+
+  if (weapon.length) {
+    weapon.forEach(w => {
+      creature.setInventory({ weapon: w })
+    })
+    creature.setWeaponEquipped(weapon[0])
+  }
+
+  if (treasure.length) {
+    treasure.forEach(t => {
+      creature.setInventory({ treasure: t })
+    })
+  }
+
   creature.name = name
 
   return creature
