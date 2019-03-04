@@ -76,7 +76,7 @@ module.exports = {
     hasAmmunition: true,
     minMax: [1, 4]
   },
-  battleaxe: {
+  battleAxe: {
     abilities: ['strength'],
     classification: ['melee'],
     cost: 10,
