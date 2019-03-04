@@ -23,9 +23,9 @@ describe('bestiary helper', () => {
       disadvantages: ['dexterity', 'charisma'],
       hitPointsRollFunc: () => 10,
       hitPointsModifier: 10,
-      armor: 'studdedLeather',
-      weapon: 'trident',
-      treasure: 10,
+      armor: ['studdedLeather'],
+      weapon: ['trident'],
+      treasure: [10],
       name: 'foo monster'
     })
   })
