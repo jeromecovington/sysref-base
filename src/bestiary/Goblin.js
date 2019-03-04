@@ -12,8 +12,8 @@ module.exports = provider({
   disadvantages: [],
   hitPointsRollFunc: () => roll(2, 12),
   hitPointsModifier: 0,
-  armor: 'leather',
-  weapon: 'shortSword',
-  treasure: 50,
+  armor: ['leather', 'shield'],
+  weapon: ['shortSword', 'shortBow'],
+  treasure: [50],
   name: 'Goblin'
 })
