@@ -3,6 +3,8 @@ const { BaseCreature, BaseRoll, roll } = require('../index')
 const weaponMap = require('../src/weapons/map')
 const armorMap = require('../src/armor/map')
 
+const Orc = require('../src/bestiary/Orc')
+
 const Warrior = new BaseCreature({
   strength: 12,
   dexterity: 3,
@@ -18,22 +20,6 @@ Warrior.setHitPoints(0)
 Warrior.setInventory({ weapon: 'longSword', armor: 'chainmail' })
 Warrior.setWeaponEquipped('longSword')
 Warrior.setArmorEquipped('chainmail')
-
-const Orc = new BaseCreature({
-  strength: 10,
-  dexterity: 5,
-  constitution: 10,
-  intelligence: 3,
-  wisdom: 2,
-  charisma: 1,
-  advantages: ['strength'],
-  disadvantages: ['intelligence', 'wisdom'],
-  hitPointsRollFunc: () => roll(1, 10)
-})
-Orc.setHitPoints(0)
-Orc.setInventory({ weapon: 'warhammer', armor: 'leather' })
-Orc.setWeaponEquipped('warhammer')
-Orc.setArmorEquipped('leather')
 
 const Roll = new BaseRoll({
   weaponMap,
