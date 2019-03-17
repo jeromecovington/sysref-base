@@ -7,6 +7,7 @@
     "test": "mocha test/**/*.test.js",
     "lint": "standard **/*.js",
     "coverage": "nyc --reporter=lcov npm test && nyc report",
+    "prepublish": "npm run lint && npm test -q",
     "prepush": "npm run lint && npm test -q"
   },
   "repository": {
@@ -38,5 +39,9 @@
     "nyc": "^13.0.1",
     "promptly": "^3.0.3",
     "standard": "^11.0.1"
-  }
+  },
+  "main": "index.js",
+  "files": [
+    "src"
+  ]
 }
