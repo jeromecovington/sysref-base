@@ -2,5 +2,8 @@ module.exports = {
   BaseCreature: require('./src/creature/BaseCreature'),
   BaseRoll: require('./src/roll/BaseRoll'),
   roll: require('./src/roll/helper').roll,
-  d20Roll: require('./src/roll/helper').d20Roll
+  d20Roll: require('./src/roll/helper').d20Roll,
+  weaponsMap: require('./src/weapons/map'),
+  armorMap: require('./src/armor/map'),
+  bestiary: require('./src/bestiary')
 }
