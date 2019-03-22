@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Implement xp in bestiary [#15](https://github.com/jeromecovington/sysref-base/pull/15)
+
 ## 0.4.0
 - Export weapons, armor, & bestiary [#13](https://github.com/jeromecovington/sysref-base/pull/13)
 - Initialize bestiary with two sample monsters [#12](https://github.com/jeromecovington/sysref-base/pull/12)
