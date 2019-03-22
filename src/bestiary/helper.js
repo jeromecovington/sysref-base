@@ -14,6 +14,7 @@ function provider ({
   armor = [],
   weapon = [],
   treasure = [],
+  xp,
   name
 }) {
   const creature = new BaseCreature({
@@ -55,6 +56,7 @@ function provider ({
     })
   }
 
+  creature.xp = xp
   creature.name = name
 
   return creature
