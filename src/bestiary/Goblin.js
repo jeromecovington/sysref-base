@@ -14,6 +14,6 @@ module.exports = provider({
   hitPointsModifier: 0,
   armor: ['leather', 'shield'],
   weapon: ['shortSword', 'shortBow'],
-  treasure: [50],
+  xp: 50,
   name: 'Goblin'
 })
