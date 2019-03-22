@@ -14,6 +14,6 @@ module.exports = provider({
   hitPointsModifier: 6,
   armor: ['hide'],
   weapon: ['greatAxe', 'javelin'],
-  treasure: [100],
+  xp: 100,
   name: 'Orc'
 })
