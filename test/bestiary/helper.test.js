@@ -14,18 +14,19 @@ describe('bestiary helper', () => {
   beforeEach(() => {
     monster = provider({
       strength: 10,
-      dexterity: 10,
-      constitution: 10,
-      intelligence: 10,
-      wisdom: 10,
-      charisma: 10,
+      dexterity: 11,
+      constitution: 12,
+      intelligence: 13,
+      wisdom: 14,
+      charisma: 15,
       advantages: ['strength', 'intelligence'],
       disadvantages: ['dexterity', 'charisma'],
-      hitPointsRollFunc: () => 10,
-      hitPointsModifier: 10,
+      hitPointsRollFunc: () => 16,
+      hitPointsModifier: 17,
       armor: ['studdedLeather'],
       weapon: ['trident'],
-      treasure: [10],
+      treasure: [18],
+      xp: 19,
       name: 'foo monster'
     })
   })
@@ -37,11 +38,11 @@ describe('bestiary helper', () => {
   describe('provider', () => {
     it('should set abilities', () => {
       expect(monster.getAbility('strength')).to.equal(10)
-      expect(monster.getAbility('dexterity')).to.equal(10)
-      expect(monster.getAbility('constitution')).to.equal(10)
-      expect(monster.getAbility('intelligence')).to.equal(10)
-      expect(monster.getAbility('wisdom')).to.equal(10)
-      expect(monster.getAbility('charisma')).to.equal(10)
+      expect(monster.getAbility('dexterity')).to.equal(11)
+      expect(monster.getAbility('constitution')).to.equal(12)
+      expect(monster.getAbility('intelligence')).to.equal(13)
+      expect(monster.getAbility('wisdom')).to.equal(14)
+      expect(monster.getAbility('charisma')).to.equal(15)
     })
 
     it('should set advantages', () => {
@@ -53,7 +54,7 @@ describe('bestiary helper', () => {
     })
 
     it('should set hitpoints', () => {
-      expect(monster.getHitPoints()).to.equal(20)
+      expect(monster.getHitPoints()).to.equal(33)
     })
 
     it('should set armor', () => {
@@ -62,6 +63,14 @@ describe('bestiary helper', () => {
 
     it('should set weapon', () => {
       expect(monster.getWeaponEquipped()).to.equal('trident')
+    })
+
+    it('should set treasure', () => {
+      expect(monster.getInventory().treasure).to.deep.equal([18])
+    })
+
+    it('should set xp', () => {
+      expect(monster.xp).to.equal(19)
     })
 
     it('should set name', () => {
