@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Add BaseCharacter class and tests (not yet implemented) [#17](https://github.com/jeromecovington/sysref-base/pull/17)
 - Refactor bestiary provider to BaseMonster class [#16](https://github.com/jeromecovington/sysref-base/pull/16)
 - Implement xp in bestiary [#15](https://github.com/jeromecovington/sysref-base/pull/15)
 
