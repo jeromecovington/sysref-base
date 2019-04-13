@@ -1,7 +1,7 @@
-const { provider } = require('./helper')
+const BaseMonster = require('./BaseMonster')
 const { roll } = require('../roll/helper')
 
-module.exports = provider({
+module.exports = new BaseMonster({
   strength: 8,
   dexterity: 14,
   constitution: 10,

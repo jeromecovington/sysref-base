@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Refactor bestiary provider to BaseMonster class [#16](https://github.com/jeromecovington/sysref-base/pull/16)
 - Implement xp in bestiary [#15](https://github.com/jeromecovington/sysref-base/pull/15)
 
 ## 0.4.0
