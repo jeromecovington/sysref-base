@@ -8,8 +8,8 @@
     "lint": "standard **/*.js",
     "coverage": "nyc --reporter=lcov npm test && nyc report",
     "examples": "EXAMPLES_SMOKETEST=true node examples/character.js && node examples/ability.js && node examples/combat.js && node examples/save.js",
-    "prepublish": "npm run lint && npm test -q",
-    "prepush": "npm run lint && npm test -q"
+    "prepublish": "npm run lint && npm test && npm run examples -q",
+    "prepush": "npm run lint && npm test && npm run examples -q"
   },
   "repository": {
     "type": "git",
