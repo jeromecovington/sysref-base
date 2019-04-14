@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Use type when implementing `BaseMonster` [#24](https://github.com/jeromecovington/sysref-base/pull/24)
 - Cleanup examples and smoketest [#23](https://github.com/jeromecovington/sysref-base/pull/23)
 - Use `BaseCharacter` in examples [#22](https://github.com/jeromecovington/sysref-base/pull/22)
 - Improve README [#20](https://github.com/jeromecovington/sysref-base/pull/20)
