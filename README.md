@@ -11,7 +11,7 @@ Exports several classes: `BaseCreature`, `BaseMonster`, and `BaseRoll` for use i
 
 ### Utilties
 
-Two utility functions, `roll` and `d20Roll`, are also exported. These are represented of dice rolls useful in game implementations. In addition, basic weapons and armor are exported as `weaponsMap` and `armorMap`, though these may be extended or replaced when instantiating the `BaseRoll`, which encapsulates much game logic.
+Two utility functions, `roll` and `d20Roll`, are also exported. These are representive of dice rolls useful in game implementations. In addition, basic weapons and armor are exported as `weaponsMap` and `armorMap`, though these may be extended or replaced when instantiating the `BaseRoll`, which encapsulates much game logic.
 
 ### Examples
 
