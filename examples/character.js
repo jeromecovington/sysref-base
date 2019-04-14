@@ -1,3 +1,6 @@
+console.log('\n')
+console.log('=== character generation example ===')
+
 const {
   d20Roll,
   roll
@@ -33,20 +36,21 @@ function generateAbilities () {
  * @returns {Promise<void>}
  */
 async function generateCharacter () {
+  const smokeTest = process.env.EXAMPLES_SMOKETEST === 'true'
   console.log('Generating character...')
   const abilities = generateAbilities()
   const hitPoints = roll(1, 10)
   console.log(abilities)
   console.log(`Hit Points: ${hitPoints}`)
-  const choice = await promptly.prompt('Accept abilities? y/n')
-  if (choice === 'y') {
+  const choice = smokeTest || await promptly.prompt('Accept abilities? y/n') === 'y'
+  if (choice) {
     const hitPointsRollFunc = () => hitPoints
     const config = {
       ...abilities,
       hitPointsRollFunc
     }
-    const type = await promptly.prompt('What is your character\'s type?')
-    const name = await promptly.prompt('What is your character\'s name?')
+    const type = smokeTest ? 'Fighter' : await promptly.prompt('What is your character\'s type?')
+    const name = smokeTest ? 'Foo' : await promptly.prompt('What is your character\'s name?')
     const Character = new BaseCharacter({...config, type, name})
     const moniker = `${Character.getName()} the ${Character.getType()}`
     Character.setHitPoints(0)
