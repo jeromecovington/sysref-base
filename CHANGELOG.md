@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Use `BaseCharacter` in examples [#22](https://github.com/jeromecovington/sysref-base/pull/22)
 - Improve README [#20](https://github.com/jeromecovington/sysref-base/pull/20)
 - Export `BaseMonster` class [#19](https://github.com/jeromecovington/sysref-base/pull/19)
 - Add `BaseCharacter` class and tests (not yet implemented) [#17](https://github.com/jeromecovington/sysref-base/pull/17)

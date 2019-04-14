@@ -1,11 +1,13 @@
-const { BaseCreature, BaseRoll, roll } = require('../index')
+const { BaseRoll, roll } = require('../index')
+const BaseCharacter = require('../src/character/BaseCharacter')
 
 const weaponMap = require('../src/weapons/map')
 const armorMap = require('../src/armor/map')
 
 const Orc = require('../src/bestiary/Orc')
+const orcType = Orc.getType()
 
-const Warrior = new BaseCreature({
+const Fighter = new BaseCharacter({
   strength: 12,
   dexterity: 3,
   constitution: 10,
@@ -14,12 +16,16 @@ const Warrior = new BaseCreature({
   charisma: 6,
   advantages: ['strength'],
   disadvantages: ['dexterity'],
-  hitPointsRollFunc: () => roll(2, 12)
+  hitPointsRollFunc: () => roll(2, 12),
+  type: 'Fighter',
+  level: 10,
+  name: 'Francis'
 })
-Warrior.setHitPoints(0)
-Warrior.setInventory({ weapon: 'longSword', armor: 'chainmail' })
-Warrior.setWeaponEquipped('longSword')
-Warrior.setArmorEquipped('chainmail')
+Fighter.setHitPoints(0)
+Fighter.setInventory({ weapon: 'longSword', armor: 'chainmail' })
+Fighter.setWeaponEquipped('longSword')
+Fighter.setArmorEquipped('chainmail')
+const moniker = `${Fighter.getName()} the ${Fighter.getType()}`
 
 const Roll = new BaseRoll({
   weaponMap,
@@ -27,26 +33,26 @@ const Roll = new BaseRoll({
 })
 
 while (1) {
-  const warriorAttack = Roll.attackRoll(Warrior, Orc)
-  if (warriorAttack > 0) {
-    console.log(`The warrior scored a hit on the orc for ${warriorAttack}.`)
-    Orc.modifyHitPoints(-warriorAttack)
+  const fighterAttack = Roll.attackRoll(Fighter, Orc)
+  if (fighterAttack > 0) {
+    console.log(`${moniker} scored a hit on the ${orcType} for ${fighterAttack}.`)
+    Orc.modifyHitPoints(-fighterAttack)
     const orcHealth = Orc.getHitPoints()
-    console.log(`The orc has ${orcHealth} hit points.`)
+    console.log(`The ${orcType} has ${orcHealth} hit points.`)
     if (orcHealth <= 0) {
-      console.log('The orc has perished.')
+      console.log(`The ${orcType} has perished.`)
       break
     }
   }
 
-  const orcAttack = Roll.attackRoll(Orc, Warrior)
+  const orcAttack = Roll.attackRoll(Orc, Fighter)
   if (orcAttack > 0) {
-    console.log(`The orc scored a hit on the warrior for ${orcAttack}.`)
-    Warrior.modifyHitPoints(-orcAttack)
-    const warriorHealth = Warrior.getHitPoints()
-    console.log(`The warrior has ${warriorHealth} hit points.`)
-    if (warriorHealth <= 0) {
-      console.log('The warrior has perished.')
+    console.log(`The ${orcType} scored a hit on ${moniker} for ${orcAttack}.`)
+    Fighter.modifyHitPoints(-orcAttack)
+    const fighterHealth = Fighter.getHitPoints()
+    console.log(`${moniker} has ${fighterHealth} hit points.`)
+    if (fighterHealth <= 0) {
+      console.log(`${moniker} fighter has perished.`)
       break
     }
   }

@@ -1,8 +1,8 @@
 const {
-  BaseCreature,
   d20Roll,
   roll
 } = require('../index')
+const BaseCharacter = require('../src/character/BaseCharacter')
 const promptly = require('promptly')
 
 /**
@@ -45,9 +45,12 @@ async function generateCharacter () {
       ...abilities,
       hitPointsRollFunc
     }
-    const Character = new BaseCreature(config)
+    const type = await promptly.prompt('What is your character\'s type?')
+    const name = await promptly.prompt('What is your character\'s name?')
+    const Character = new BaseCharacter({...config, type, name})
+    const moniker = `${Character.getName()} the ${Character.getType()}`
     Character.setHitPoints(0)
-    console.log('Character accepted!')
+    console.log(`${moniker} created!`)
     process.exit()
   } else {
     await generateCharacter()
