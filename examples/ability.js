@@ -1,3 +1,6 @@
+console.log('\n')
+console.log('=== ability check example ===')
+
 const { BaseRoll, roll } = require('../index')
 const BaseCharacter = require('../src/character/BaseCharacter')
 

@@ -1,3 +1,6 @@
+console.log('\n')
+console.log('=== character generation example ===')
+
 const {
   d20Roll,
   roll
@@ -38,8 +41,9 @@ async function generateCharacter () {
   const hitPoints = roll(1, 10)
   console.log(abilities)
   console.log(`Hit Points: ${hitPoints}`)
-  const choice = await promptly.prompt('Accept abilities? y/n')
-  if (choice === 'y') {
+  const choice = process.env.EXAMPLES_SMOKETEST === 'true' ||
+    await promptly.prompt('Accept abilities? y/n') === 'y'
+  if (choice) {
     const hitPointsRollFunc = () => hitPoints
     const config = {
       ...abilities,
