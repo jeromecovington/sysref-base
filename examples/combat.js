@@ -52,7 +52,7 @@ while (1) {
     const fighterHealth = Fighter.getHitPoints()
     console.log(`${moniker} has ${fighterHealth} hit points.`)
     if (fighterHealth <= 0) {
-      konsole.log(`${moniker} fighter has perished.`)
+      console.log(`${moniker} fighter has perished.`)
       break
     }
   }
