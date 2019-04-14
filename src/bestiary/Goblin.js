@@ -14,6 +14,6 @@ module.exports = new BaseMonster({
   hitPointsModifier: 0,
   armor: ['leather', 'shield'],
   weapon: ['shortSword', 'shortBow'],
-  xp: 50,
-  name: 'Goblin'
+  type: 'Goblin',
+  xp: 50
 })

@@ -14,6 +14,6 @@ module.exports = new BaseMonster({
   hitPointsModifier: 6,
   armor: ['hide'],
   weapon: ['greatAxe', 'javelin'],
-  xp: 100,
-  name: 'Orc'
+  type: 'Orc',
+  xp: 100
 })
