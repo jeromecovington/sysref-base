@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Improve README [#20](https://github.com/jeromecovington/sysref-base/pull/20)
 - Export `BaseMonster` class [#19](https://github.com/jeromecovington/sysref-base/pull/19)
 - Add `BaseCharacter` class and tests (not yet implemented) [#17](https://github.com/jeromecovington/sysref-base/pull/17)
 - Refactor bestiary provider to `BaseMonster` class [#16](https://github.com/jeromecovington/sysref-base/pull/16)
