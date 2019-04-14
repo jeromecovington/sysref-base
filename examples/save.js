@@ -1,8 +1,9 @@
-const { BaseCreature, BaseRoll, roll } = require('../index')
+const { BaseRoll, roll } = require('../index')
+const BaseCharacter = require('../src/character/BaseCharacter')
 
 const Roll = new BaseRoll()
 
-const Wizard = new BaseCreature({
+const Wizard = new BaseCharacter({
   strength: 5,
   dexterity: 7,
   constitution: 7,
@@ -11,13 +12,18 @@ const Wizard = new BaseCreature({
   charisma: 7,
   advantages: ['intelligence', 'wisdom'],
   disadvantages: ['dexterity', 'strength'],
-  hitPointsRollFunc: () => roll(1, 6)
+  hitPointsRollFunc: () => roll(1, 6),
+  type: 'Wizard',
+  level: 10,
+  name: 'Willard'
 })
 
-console.log('The wizard attempts to ward off the witch\'s curse')
+const moniker = `${Wizard.getName()} the ${Wizard.getType()}`
+
+console.log(`${moniker} attempts to ward off the witch's curse`)
 const result = Roll.savingThrow(Wizard, 'intelligence', 2, 'hard')
 if (result) {
-  console.log('The wizard successfully wards off the witch\'s curse.')
+  console.log(`${moniker} successfully wards off the witch's curse.`)
 } else {
-  console.log('The wizard is cursed by the witch\'s evil spell.')
+  console.log(`${moniker} is cursed by the witch's evil spell.`)
 }
