@@ -3,6 +3,9 @@
   "version": "0.4.0",
   "description": "Base classes for emulating basic System Reference Document game mechanics",
   "main": "index.js",
+  "files": [
+    "src/"
+  ],
   "scripts": {
     "test": "mocha test/**/*.test.js",
     "lint": "standard **/*.js",
