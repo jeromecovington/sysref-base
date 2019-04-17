@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Only include src dir on publish [#25](https://github.com/jeromecovington/sysref-base/pull/25)
 - Use type when implementing `BaseMonster` [#24](https://github.com/jeromecovington/sysref-base/pull/24)
 - Cleanup examples and smoketest [#23](https://github.com/jeromecovington/sysref-base/pull/23)
 - Use `BaseCharacter` in examples [#22](https://github.com/jeromecovington/sysref-base/pull/22)
