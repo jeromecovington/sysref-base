@@ -1,6 +1,6 @@
-const Basethis = require('../creature/BaseCreature')
+const BaseCreature = require('../creature/BaseCreature')
 
-module.exports = class BaseMonster extends Basethis {
+module.exports = class BaseMonster extends BaseCreature {
   constructor ({
     strength,
     dexterity,
