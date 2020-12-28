@@ -185,6 +185,24 @@ describe('roll base', () => {
 
       expect(result).to.deep.equal([Winner, Loser])
     })
+
+    it('should eventually break a tie', () => {
+      const Roll = new BaseRoll({
+        rollFunc: () => [10, 10],
+        weaponMap,
+        armorMap
+      })
+      const CreatureOne = new BaseCreature({
+        dexterity: 10
+      })
+      const CreatureTwo = new BaseCreature({
+        dexterity: 10
+      })
+      const result = Roll.initiative([CreatureOne, CreatureTwo])
+
+      expect(result).to.include(CreatureOne)
+      expect(result).to.include(CreatureTwo)
+    })
   })
 
   describe('savingThrow', () => {
