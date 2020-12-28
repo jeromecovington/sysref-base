@@ -98,6 +98,50 @@ module.exports = class BaseRoll {
     return damage
   }
 
+  // https://5thsrd.org/combat/order_of_combat/#initiative
+  initiative (entities) {
+    const withDexterityChecks = entities.reduce((acc, entity) => {
+      let check
+      const modifier = getModifier(entity.getAbility('dexterity'))
+      const advantageOrDisadvantage = getAdvantageOrDisadvantage(entity, 'dexterity')
+
+      if (advantageOrDisadvantage) {
+        const roll1 = this.rollFunc(modifier)[1]
+        const roll2 = this.rollFunc(modifier)[1]
+        check = applyAdvantageOrDisadvantage(roll1, roll2, advantageOrDisadvantage)
+      } else {
+        check = this.rollFunc(modifier)[1]
+      }
+      acc.push([entity, check])
+      return acc
+    }, [])
+
+    withDexterityChecks.sort((a, b) => {
+      if (a[1] < b[1]) {
+        return -1
+      }
+
+      if (a[1] > b[1]) {
+        return 1
+      }
+
+      while (1) {
+        const aTieBreak = d20Roll()
+        const bTieBreak = d20Roll()
+
+        if (aTieBreak < bTieBreak) {
+          return -1
+        }
+
+        if (aTieBreak > bTieBreak) {
+          return 1
+        }
+      }
+    })
+
+    return withDexterityChecks.map(tuple => tuple[0])
+  }
+
   // https://www.5thsrd.org/rules/abilities/saving_throws/
   savingThrow (entity, ability, difficulty, bonusOrPenalty = 0) {
     const advantageOrDisadvantage = getAdvantageOrDisadvantage(entity, ability)
@@ -112,3 +156,4 @@ module.exports = class BaseRoll {
     return makeSavingThrow(entity, ability, bonusOrPenalty, this.rollFunc) >= this.difficultyMap[difficulty]
   }
 }
+

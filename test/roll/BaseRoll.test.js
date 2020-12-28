@@ -172,6 +172,39 @@ describe('roll base', () => {
     })
   })
 
+  describe('initiative', () => {
+    it('should calculate initiative', () => {
+      const Winner = new BaseCreature({
+        dexterity: 10
+      })
+      const Loser = new BaseCreature({
+        dexterity: 10
+      })
+      // Mock roll increases likelihood of ability check on second roll.
+      const result = Roll.initiative([Loser, Winner])
+
+      expect(result).to.deep.equal([Winner, Loser])
+    })
+
+    it('should eventually break a tie', () => {
+      const Roll = new BaseRoll({
+        rollFunc: () => [10, 10],
+        weaponMap,
+        armorMap
+      })
+      const CreatureOne = new BaseCreature({
+        dexterity: 10
+      })
+      const CreatureTwo = new BaseCreature({
+        dexterity: 10
+      })
+      const result = Roll.initiative([CreatureOne, CreatureTwo])
+
+      expect(result).to.include(CreatureOne)
+      expect(result).to.include(CreatureTwo)
+    })
+  })
+
   describe('savingThrow', () => {
     it('should apply advantage, no bonus and easy difficulty to saving throw', () => {
       const result = Roll.savingThrow(Creature, 'strength', 'easy', 1)
