@@ -116,7 +116,7 @@ module.exports = class BaseRoll {
       return acc
     }, [])
 
-    const sortedTuples = withDexterityChecks.sort((a, b) => {
+    withDexterityChecks.sort((a, b) => {
       if (a[1] < b[1]) {
         return -1
       }
@@ -125,11 +125,21 @@ module.exports = class BaseRoll {
         return 1
       }
 
-      // TODO: Implement tie-break.
-      return 0
+      while (1) {
+        const aTieBreak = d20Roll()
+        const bTieBreak = d20Roll()
+
+        if (aTieBreak < bTieBreak) {
+          return -1
+        }
+
+        if (aTieBreak > bTieBreak) {
+          return 1
+        }
+      }
     })
 
-    return sortedTuples.map(tuple => tuple[0])
+    return withDexterityChecks.map(tuple => tuple[0])
   }
 
   // https://www.5thsrd.org/rules/abilities/saving_throws/
