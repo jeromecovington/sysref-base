@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+- feat: initiative roll  [#31](https://github.com/jeromecovington/sysref-base/pull/31)
+- fix: correct BaseCreature import [#29](https://github.com/jeromecovington/sysref-base/pull/29)
+
 ## 0.5.0
 - Only include src dir on publish [#25](https://github.com/jeromecovington/sysref-base/pull/25)
 - Use type when implementing `BaseMonster` [#24](https://github.com/jeromecovington/sysref-base/pull/24)
