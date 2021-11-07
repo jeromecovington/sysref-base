@@ -3,6 +3,15 @@ function roll (minimum, maximum) {
   return Math.floor(Math.random() * (maximum - (minimum + 1))) + minimum
 }
 
+function d6Roll (modifier = 0) {
+  const r = roll(1, 6)
+
+  return [
+    r,
+    r + modifier
+  ]
+}
+
 function d20Roll (modifier = 0) {
   const r = roll(1, 20)
 
@@ -79,6 +88,7 @@ function applyAdvantageOrDisadvantage (roll1, roll2, advantageOrDisadvantage = '
 
 module.exports = {
   roll,
+  d6Roll,
   d20Roll,
   damageRoll,
   getAdvantageOrDisadvantage,
