@@ -2,14 +2,14 @@ console.log('\n')
 console.log('=== character generation example ===')
 
 const {
-  d20Roll,
+  d6Roll,
   roll
 } = require('../index')
 const BaseCharacter = require('../src/character/BaseCharacter')
 const promptly = require('promptly')
 
 /**
- * Generate abilities, using `d20Roll`, for the player at the beginning of a
+ * Generate abilities, using highest 3 of 4 `d6Roll`, for the player at the beginning of a
  * hypothetical game implementation (which may be accepted or rejected).
  *
  * @returns {Object} the generated abilities for the player
@@ -24,7 +24,10 @@ function generateAbilities () {
     'charisma'
   ]
   return abilityKeys.reduce((acc, key) => {
-    acc[key] = d20Roll()[0]
+    const rolls = [d6Roll()[0], d6Roll()[0], d6Roll()[0], d6Roll()[0]]
+    rolls.sort().shift()
+    acc[key] = rolls.reduce((a, b) => a + b)
+
     return acc
   }, {})
 }
